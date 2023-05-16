@@ -1,0 +1,203 @@
+[gd_scene load_steps=21 format=2]
+
+[ext_resource path="res://src/entities/player/Player.tscn" type="PackedScene" id=1]
+[ext_resource path="res://assets/textures/background/Layer_0005_5.png" type="Texture" id=2]
+[ext_resource path="res://Main.gd" type="Script" id=3]
+[ext_resource path="res://src/entities/enemies/Turret.tscn" type="PackedScene" id=4]
+[ext_resource path="res://src/entities/enemies/TurretsSpawner.gd" type="Script" id=5]
+[ext_resource path="res://src/enviroment/Platform.tscn" type="PackedScene" id=6]
+[ext_resource path="res://src/enviroment/Ramp.tscn" type="PackedScene" id=7]
+[ext_resource path="res://src/enviroment/Trophy.tscn" type="PackedScene" id=8]
+[ext_resource path="res://src/enviroment/Obstacle.tscn" type="PackedScene" id=9]
+[ext_resource path="res://src/enviroment/Floor.tscn" type="PackedScene" id=10]
+[ext_resource path="res://src/enviroment/Wall.tscn" type="PackedScene" id=11]
+[ext_resource path="res://assets/textures/background/Layer_0001_8.png" type="Texture" id=12]
+[ext_resource path="res://assets/textures/background/Layer_0006_4.png" type="Texture" id=13]
+[ext_resource path="res://assets/textures/background/Layer_0008_3.png" type="Texture" id=14]
+[ext_resource path="res://assets/textures/background/Layer_0010_1.png" type="Texture" id=15]
+[ext_resource path="res://assets/textures/background/Layer_0003_6.png" type="Texture" id=16]
+[ext_resource path="res://assets/textures/background/Layer_0000_9.png" type="Texture" id=17]
+[ext_resource path="res://assets/textures/background/Layer_0009_2.png" type="Texture" id=18]
+[ext_resource path="res://assets/textures/background/Layer_0002_7.png" type="Texture" id=19]
+[ext_resource path="res://assets/textures/background/Layer_0004_Lights.png" type="Texture" id=20]
+
+[node name="Main" type="Node"]
+script = ExtResource( 3 )
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+layer = -1
+
+[node name="Environment" type="Node2D" parent="."]
+position = Vector2( -7.99999, -11 )
+scale = Vector2( 1.28366, 1.50481 )
+
+[node name="Ground" type="Node2D" parent="Environment"]
+
+[node name="Floor" parent="Environment/Ground" instance=ExtResource( 10 )]
+position = Vector2( 1424.51, 565.622 )
+
+[node name="Floor2" parent="Environment/Ground" instance=ExtResource( 10 )]
+position = Vector2( 768.506, 565.622 )
+z_index = -15
+
+[node name="Floor3" parent="Environment/Ground" instance=ExtResource( 10 )]
+position = Vector2( 112.506, 565.622 )
+
+[node name="Floor4" parent="Environment/Ground" instance=ExtResource( 10 )]
+position = Vector2( 2083.1, 565.522 )
+
+[node name="Floor5" parent="Environment/Ground" instance=ExtResource( 10 )]
+position = Vector2( 2732.81, 565.522 )
+
+[node name="Wall" parent="Environment/Ground" instance=ExtResource( 11 )]
+position = Vector2( 31.8359, 298.952 )
+
+[node name="Ramp" parent="Environment/Ground" instance=ExtResource( 7 )]
+position = Vector2( 1396.44, 536.07 )
+
+[node name="Ramp2" parent="Environment/Ground" instance=ExtResource( 7 )]
+position = Vector2( 270.656, 534.143 )
+rotation = 0.690548
+
+[node name="Ramp3" parent="Environment/Ground" instance=ExtResource( 7 )]
+position = Vector2( 612.657, 618.001 )
+rotation = -0.601429
+
+[node name="Platform" parent="Environment/Ground" instance=ExtResource( 6 )]
+position = Vector2( 1472.51, 221.622 )
+
+[node name="Platform2" parent="Environment/Ground" instance=ExtResource( 6 )]
+position = Vector2( 1728.51, 261.622 )
+
+[node name="Platform3" parent="Environment/Ground" instance=ExtResource( 6 )]
+position = Vector2( 1584.51, 413.622 )
+
+[node name="Platform4" parent="Environment/Ground" instance=ExtResource( 6 )]
+position = Vector2( 449.581, 484.16 )
+
+[node name="Platform5" parent="Environment/Ground" instance=ExtResource( 6 )]
+position = Vector2( 545.103, 484.106 )
+
+[node name="Entities" type="Node2D" parent="Environment"]
+
+[node name="Player" parent="Environment/Entities" instance=ExtResource( 1 )]
+position = Vector2( 522.724, 289.738 )
+
+[node name="Camera" type="Camera2D" parent="Environment/Entities/Player"]
+position = Vector2( -197.872, -116.959 )
+current = true
+
+[node name="TurretsSpawner" type="Position2D" parent="Environment/Entities"]
+position = Vector2( 1269.72, 24.3184 )
+script = ExtResource( 5 )
+turret_scene = ExtResource( 4 )
+extents = Vector2( 300, -350 )
+
+[node name="Turret" parent="Environment/Entities/TurretsSpawner" instance=ExtResource( 4 )]
+position = Vector2( 177.28, 639.682 )
+
+[node name="Obstacles" type="Node2D" parent="Environment/Entities"]
+
+[node name="Obstacle" parent="Environment/Entities/Obstacles" instance=ExtResource( 9 )]
+position = Vector2( 1496.68, 186.419 )
+
+[node name="Obstacle2" parent="Environment/Entities/Obstacles" instance=ExtResource( 9 )]
+position = Vector2( 485.687, 442.792 )
+
+[node name="Obstacle3" parent="Environment/Entities/Obstacles" instance=ExtResource( 9 )]
+position = Vector2( 485.266, 399.065 )
+mass = 20.0
+
+[node name="Obstacle4" parent="Environment/Entities/Obstacles" instance=ExtResource( 9 )]
+position = Vector2( 515.538, 442.371 )
+
+[node name="Obstacle5" parent="Environment/Entities/Obstacles" instance=ExtResource( 9 )]
+position = Vector2( 516.379, 398.224 )
+
+[node name="Trophy" parent="Environment/Entities" instance=ExtResource( 8 )]
+position = Vector2( 1464.51, 5.62158 )
+
+[node name="ParallaxBackground" type="ParallaxBackground" parent="."]
+scroll_base_offset = Vector2( 2, 33 )
+
+[node name="ParallaxLayer" type="ParallaxLayer" parent="ParallaxBackground"]
+motion_scale = Vector2( -1, 1 )
+motion_mirroring = Vector2( 928, 0 )
+
+[node name="Sprite" type="Sprite" parent="ParallaxBackground/ParallaxLayer"]
+position = Vector2( 533, 399 )
+texture = ExtResource( 15 )
+
+[node name="ParallaxLayerLights" type="ParallaxLayer" parent="ParallaxBackground"]
+position = Vector2( 526, 396 )
+z_index = -1
+motion_scale = Vector2( 0, 1 )
+motion_mirroring = Vector2( 928, 0 )
+
+[node name="Sprite" type="Sprite" parent="ParallaxBackground/ParallaxLayerLights"]
+position = Vector2( 27, 57 )
+texture = ExtResource( 20 )
+
+[node name="ParallaxLayer2" type="ParallaxLayer" parent="ParallaxBackground"]
+motion_scale = Vector2( 0.02, 1 )
+motion_mirroring = Vector2( 928, 0 )
+
+[node name="Sprite" type="Sprite" parent="ParallaxBackground/ParallaxLayer2"]
+position = Vector2( 498, 486 )
+texture = ExtResource( 18 )
+
+[node name="ParallaxLayer3" type="ParallaxLayer" parent="ParallaxBackground"]
+motion_scale = Vector2( 0.05, 1 )
+motion_mirroring = Vector2( 928, 0 )
+
+[node name="Sprite" type="Sprite" parent="ParallaxBackground/ParallaxLayer3"]
+position = Vector2( 532, 395 )
+texture = ExtResource( 14 )
+
+[node name="ParallaxLayer4" type="ParallaxLayer" parent="ParallaxBackground"]
+motion_scale = Vector2( 0.05, 1 )
+motion_mirroring = Vector2( 928, 0 )
+
+[node name="Sprite" type="Sprite" parent="ParallaxBackground/ParallaxLayer4"]
+position = Vector2( 483, 413 )
+texture = ExtResource( 13 )
+
+[node name="ParallaxLayer5" type="ParallaxLayer" parent="ParallaxBackground"]
+motion_scale = Vector2( 0.1, 1 )
+motion_mirroring = Vector2( 928, 0 )
+
+[node name="Sprite" type="Sprite" parent="ParallaxBackground/ParallaxLayer5"]
+position = Vector2( 481, 407 )
+texture = ExtResource( 2 )
+
+[node name="ParallaxLayer6" type="ParallaxLayer" parent="ParallaxBackground"]
+position = Vector2( -7, -736 )
+motion_scale = Vector2( 0.6, 1 )
+motion_mirroring = Vector2( 928, 0 )
+
+[node name="Sprite" type="Sprite" parent="ParallaxBackground/ParallaxLayer6"]
+position = Vector2( 494, 1171 )
+texture = ExtResource( 16 )
+
+[node name="ParallaxLayerTreeCrown" type="ParallaxLayer" parent="ParallaxBackground"]
+position = Vector2( 51, 430 )
+motion_scale = Vector2( 0.6, 1 )
+motion_mirroring = Vector2( 928, 0 )
+
+[node name="Sprite" type="Sprite" parent="ParallaxBackground/ParallaxLayerTreeCrown"]
+position = Vector2( 461, 10 )
+texture = ExtResource( 19 )
+
+[node name="ParallaxLayerFloor1" type="ParallaxLayer" parent="ParallaxBackground"]
+position = Vector2( 540, 441 )
+motion_mirroring = Vector2( 928, 0 )
+
+[node name="Sprite" type="Sprite" parent="ParallaxBackground/ParallaxLayerFloor1"]
+texture = ExtResource( 12 )
+
+[node name="ParallaxLayerFloor2" type="ParallaxLayer" parent="ParallaxBackground"]
+position = Vector2( 526, 396 )
+motion_mirroring = Vector2( 928, 0 )
+
+[node name="Sprite" type="Sprite" parent="ParallaxBackground/ParallaxLayerFloor2"]
+texture = ExtResource( 17 )
