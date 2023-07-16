@@ -1,14 +1,20 @@
-[gd_scene load_steps=3 format=2]
+[gd_scene load_steps=4 format=2]
 
 [ext_resource path="res://src/entities/Projectile.tscn" type="PackedScene" id=1]
+[ext_resource path="res://assets/textures/player/hairball.png" type="Texture" id=2]
 
 [sub_resource type="CircleShape2D" id=1]
 radius = 8.0
 
 [node name="PlayerProjectile" instance=ExtResource( 1 )]
+position = Vector2( 0.499999, 0.5 )
+scale = Vector2( 0.585714, 0.5 )
+texture = ExtResource( 2 )
 
 [node name="Hitbox" parent="." index="1"]
+position = Vector2( -1.55556, -1.6279 )
 collision_mask = 5
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Hitbox" index="0"]
+position = Vector2( 0, -3.8147e-06 )
 shape = SubResource( 1 )
